@@ -1,0 +1,26 @@
+hr{
+    color: black;
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.loginBoxMargin {
+    margin: auto;
+    margin-top:8vh;
+}
+
+.size {
+    width: 85%;
+}
+
+@media screen and (min-width: 750px) and (max-width: 1250px){
+    .size {
+        width: 40vw;
+    }
+}
+
+@media screen and (min-width: 1250px){
+    .size {
+        width: 30vw;
+    }
+}

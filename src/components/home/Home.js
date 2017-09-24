@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { authenticate } from "../../actions/AuthenticationActions";
 
-class Home extends React.Component {
+export default class Home extends React.Component {
 
     constructor(props) {
         super(props);
@@ -11,18 +11,18 @@ class Home extends React.Component {
 
     componentWillMount(){
         // Called the first time the component is loaded right before the component is added to the page
-        if(!this.props.authentication.isAuthenticated){
-            this.props.history.push('/');
-        }
+        // if(!this.props.authentication.isAuthenticated){
+        //     this.props.history.push('/');
+        // }
     }
 
     componentWillReceiveProps(nextProps){
         // Called when the props provided to the component are changed
-        if(nextProps.authentication.isAuthenticated){
-            this.props.history.push('/home');
-        }else {
-            this.props.history.push('/');
-        }
+        // if(nextProps.authentication.isAuthenticated){
+        //     this.props.history.push('/home');
+        // }else {
+        //     this.props.history.push('/');
+        // }
     }
 
     render(){
@@ -62,7 +62,7 @@ class Home extends React.Component {
                         <div class="col-sm-8 text-left">
                             <h1>Welcome</h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <hr>
+                            <hr/>
                                 <h3>Test</h3>
                                 <p>Lorem ipsum...</p>
                         </div>

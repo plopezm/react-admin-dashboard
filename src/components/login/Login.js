@@ -47,7 +47,7 @@ class Login extends React.Component {
         return (
             <div className="loginBox card">
                 <div className="mx-auto loginTitleMargin">
-                    <h1 className="center-block">Gowa</h1>
+                    <h1 className="center-block">MyApp</h1>
                 </div>
                 <div>
                     <form className="container" onSubmit={this.onPushSubmit}>

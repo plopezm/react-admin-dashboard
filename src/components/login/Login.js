@@ -45,21 +45,25 @@ class Login extends React.Component {
     render() {
         // console.log(this.context);
         return (
-            <div className="col88 fullHeight card_4 padding16 loginBoxMargin size">
-                <header>
-                    <h1 className="aligncenter text_wide noMargin">Gowa</h1>
-                </header>
-                <section>
-                    <form className="container wrap input_group" onSubmit={this.onPushSubmit}>
-
+            <div className="loginBox card">
+                <div className="mx-auto loginTitleMargin">
+                    <h1 className="center-block">Gowa</h1>
+                </div>
+                <div>
+                    <form className="container" onSubmit={this.onPushSubmit}>
                         <hr/>
-                        <input className="col100" type="text" onChange={this.handleUser} placeholder="Username" />
-                        <input className="col100 input_control" onChange={this.handlePassword} type="password" placeholder="Password"/>
-                        <div className="fullWidth">
-                            <input type="submit" className="fullWidth button_green" value="Sign in" />
+                        <div className="form-group">
+                            <input className="form-control" type="text" onChange={this.handleUser} placeholder="Username" />
                         </div>
+                        <div className="form-group">
+                            <input className="form-control" onChange={this.handlePassword} type="password" placeholder="Password"/>
+                        </div>
+                        <div className="form-group">
+                                <input type="submit" className="btn btn-primary" value="Sign in" />
+                        </div>
+
                     </form>
-                </section>
+                </div>
             </div>
         );
     }

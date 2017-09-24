@@ -4,23 +4,30 @@ hr{
     margin-bottom: 32px;
 }
 
-.loginBoxMargin {
+.loginBox {
     margin: auto;
     margin-top:8vh;
+    width: 30%
 }
 
-.size {
-    width: 85%;
+.loginTitleMargin{
+    margin-top: 15px;
 }
 
 @media screen and (min-width: 750px) and (max-width: 1250px){
-    .size {
-        width: 40vw;
+    .loginBox {
+        width:40%;
     }
 }
 
-@media screen and (min-width: 1250px){
-    .size {
-        width: 30vw;
+@media screen and (min-width: 600px) and (max-width: 750px){
+    .loginBox {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .loginBox {
+        width: 90%;
     }
 }

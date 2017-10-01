@@ -1,4 +1,4 @@
-const SERVER_URL = 'http://localhost:9090';
+const SERVER_URL = 'http://localhost:9090/api/v1';
 export const API_URL = `${SERVER_URL}`;
 
 export const VALIDATE_PATH = '/validate';

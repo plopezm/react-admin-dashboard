@@ -32,7 +32,7 @@ export default function (state = getStateFromLocalStorage(), action) {
             setLocalStorageFromState(action.payload);
             return Object.assign({}, state, action.payload);
         case SIGN_OUT:
-            console.log("SIGN OUT: ",action);
+            // console.log("SIGN OUT: ",action);
             setLocalStorageFromState(action.payload);
             return INITIAL_STATE;
         default:

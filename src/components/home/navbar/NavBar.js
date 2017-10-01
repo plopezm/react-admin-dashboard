@@ -1,9 +1,16 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {logout} from '../../../actions/AuthenticationActions'
 
 class NavBar extends React.Component {
 
     constructor(props){
         super(props);
+        this.performLogout = this.performLogout.bind(this);
+    }
+
+    performLogout(){
+        this.props.logout();
     }
 
     renderBrand(){
@@ -13,7 +20,7 @@ class NavBar extends React.Component {
             );
         }else{
             return(
-               <img src={this.props.logo} alt={this.props.title} width="100px" height="100px"/>
+               <img src={this.props.logo} alt={this.props.title} width="70" height="50"/>
             );
         }
     }
@@ -52,4 +59,8 @@ class NavBar extends React.Component {
 
 }
 
-export default NavBar;
+function mapStateToProps(state) {
+    return {authentication: state.authentication};
+}
+
+export default connect(mapStateToProps, { logout })(NavBar);

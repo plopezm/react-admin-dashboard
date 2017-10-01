@@ -10,9 +10,9 @@ hr{
     margin-top:8vh;
 }
 
-/*.loginTitleMargin{*/
-    /*margin-top: 15px;*/
-/*}*/
+.loginTitleMargin{
+    margin-top: 20px;
+}
 
 @media screen and (min-width: 750px) and (max-width: 1250px){
     .loginBox {

@@ -1,6 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {logout} from '../../actions/AuthenticationActions'
 import isAuthenticated from "../authentication/AuthenticationWrapper";
 
 import NavBar from "./navbar/NavBar"
@@ -12,12 +10,6 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
-
-        this.performLogout = this.performLogout.bind(this);
-    }
-
-    performLogout(){
-        this.props.logout();
     }
 
     render(){
@@ -27,4 +19,4 @@ class Home extends React.Component {
     }
 }
 
-export default isAuthenticated(connect(null, { logout })(Home));
+export default isAuthenticated(Home);

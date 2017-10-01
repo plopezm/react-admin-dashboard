@@ -30,7 +30,7 @@ export function authenticate(user, passwd){
             },
             withCredentials: true,
         }).then((response) => {
-            console.log("Response from http: ", response);
+            // console.log("Response from http: ", response);
             dispatch({type: SIGN_IN, payload: {isAuthenticated: true, type: response.data.type, token: response.data.token}});
         }).catch((error) => {
             dispatch({type: SIGN_IN, payload:{isAuthenticated: false, type:'', token:''}});

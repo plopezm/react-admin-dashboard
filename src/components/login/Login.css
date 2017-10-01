@@ -5,14 +5,14 @@ hr{
 }
 
 .loginBox {
+    width: 30%;
     margin: auto;
     margin-top:8vh;
-    width: 30%
 }
 
-.loginTitleMargin{
-    margin-top: 15px;
-}
+/*.loginTitleMargin{*/
+    /*margin-top: 15px;*/
+/*}*/
 
 @media screen and (min-width: 750px) and (max-width: 1250px){
     .loginBox {

@@ -16,7 +16,7 @@ function setLocalStorageFromState(state) {
 
 function getStateFromLocalStorage() {
     // console.log(localStorage);
-    console.log(localStorage.getItem("credentials"));
+    // console.log(localStorage.getItem("credentials"));
     if (localStorage.getItem("credentials") === "") {
         return INITIAL_STATE;
     }

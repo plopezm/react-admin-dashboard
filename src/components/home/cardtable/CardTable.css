@@ -1,0 +1,15 @@
+.table_padding{
+    padding: 15px;
+}
+
+.table_row_size{
+    width:20rem;
+}
+
+.table_row_margin{
+    margin:15px;
+}
+
+.table_row_shadow{
+    box-shadow: 3px 3px 1px #888888;
+}

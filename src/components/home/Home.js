@@ -2,6 +2,7 @@ import React from 'react';
 import isAuthenticated from "../authentication/AuthenticationWrapper";
 
 import NavBar from "./navbar/NavBar"
+import CardTable from "./cardtable/CardTable";
 
 import "./Home.css"
 
@@ -14,7 +15,10 @@ class Home extends React.Component {
 
     render(){
         return (
-            <NavBar title="ExampleApp" logo="/logo.png"/>
+            <div>
+                <NavBar title="ExampleApp" logo="/logo.png"/>
+                <CardTable />
+            </div>
         );
     }
 }

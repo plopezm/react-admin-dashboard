@@ -1,10 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { authenticate } from "../../actions/AuthenticationActions";
 
 import './Login.css'
 
 class Login extends React.Component {
+    static contextTypes = {
+        router: PropTypes.object.isRequired
+    };
 
     constructor(props){
         super(props);
@@ -69,7 +73,6 @@ class Login extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log("New props: ",state)
     return { authentication: state.authentication };
 }
 

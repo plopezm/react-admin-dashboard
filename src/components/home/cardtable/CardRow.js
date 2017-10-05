@@ -2,7 +2,6 @@ import React from 'react';
 
 
 class CardRow extends React.Component {
-
     constructor(props){
         super(props);
     }
@@ -27,8 +26,6 @@ class CardRow extends React.Component {
             </div>
         );
     }
-
-
 }
 
 export default CardRow;

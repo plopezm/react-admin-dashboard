@@ -17,3 +17,16 @@
 .table_row_shadow{
     box-shadow: 3px 3px 1px #888888;
 }
+
+.table_row_image_image{
+    margin:15px;
+}
+
+.card-delay-margin{
+    -webkit-transition: margin 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: margin 0.5s;
+}
+
+.card:hover{
+    margin:0;
+}

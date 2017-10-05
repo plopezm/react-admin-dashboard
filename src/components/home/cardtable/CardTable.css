@@ -21,12 +21,3 @@
 .table_row_image_image{
     margin:15px;
 }
-
-.card-delay-margin{
-    -webkit-transition: margin 0.5s; /* For Safari 3.1 to 6.0 */
-    transition: margin 0.5s;
-}
-
-.card:hover{
-    margin:0;
-}

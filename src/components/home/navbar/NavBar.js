@@ -16,11 +16,11 @@ class NavBar extends React.Component {
     renderBrand(){
         if(this.props.logo === undefined){
             return (
-                <span className="navbar-brand" href="#">{this.props.title}</span>
+                <h1  href="#">{this.props.title}</h1>
             );
         }else{
             return(
-               <img src={this.props.logo} alt={this.props.title} width="70" height="50"/>
+               <img src={this.props.logo} alt={this.props.title} width="45" height="28"/>
             );
         }
     }
@@ -28,30 +28,41 @@ class NavBar extends React.Component {
     render(){
         return (
             <header>
-                <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-                    <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    {this.renderBrand()}
-                    <div className="collapse navbar-collapse" id="navbarText">
-                        <ul className="navbar-nav mr-auto">
-                            <li className="nav-item nav-link active">
-                                <a className="nav-link" href="/home">Home <span className="sr-only">(current)</span></a>
-                            </li>
-                            <li className="nav-item nav-link">
-                                <a className="nav-link" href="/contact">Contact</a>
-                            </li>
-                        </ul>
-
-                        <span className="navbar-text">
-                                <a className="nav-link">User Online: Test</a>
+                <nav className="navbar is-light" role="navigation" aria-label="main navigation">
+                    <div className="navbar-brand">
+                        <a className="navbar-item" href="#">
+                            {this.renderBrand()}
+                        </a>
+                        <button className="button navbar-burger burger" data-target="navMenu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                    <div className="navbar-menu" id="navMenu">
+                        <div className="navbar-start">
+                            <a className="navbar-item is-active" href="#">
+                                Home
+                            </a>
+                            <a className="navbar-item" href="#">
+                                Contact
+                            </a>
+                            <a className="navbar-item is-hidden-desktop"  onClick={this.performLogout}>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                    <div className="navbar-menu">
+                        <div className="navbar-end">
+                            <span className="navbar-item">
+                                <label>User Online: {this.props.username}</label>
                             </span>
-                        <span className="navbar-text">
-                                <a className="nav-link cursor_pointer" onClick={this.performLogout}><span className="glyphicons glyphicons-log-out">Logout</span></a>
+                            <span className="navbar-item">
+                                <a className="button is-primary" onClick={this.performLogout}>Logout</a>
                             </span>
+                        </div>
                     </div>
                 </nav>
-
             </header>
         );
     }

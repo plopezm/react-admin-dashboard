@@ -11,10 +11,11 @@ class CardTable extends React.Component {
     render(){
         return (
             <div className="row table_padding">
-                <CardRow/>
-                <CardRow/>
-                <CardRow/>
-                <CardRow/>
+                {
+                  this.props.objects.map((object, index) =>{
+                      return  <CardRow {...object} key={index} onEdit={this.props.onEdit} onDelete={this.props.onDelete}/>
+                  })
+                }
             </div>
         );
     }

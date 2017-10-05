@@ -1,17 +1,7 @@
-hr{
-    color: black;
-    width: 100%;
-    margin-bottom: 32px;
-}
-
 .loginBox {
     width: 30%;
     margin: auto;
     margin-top:8vh;
-}
-
-.loginTitleMargin{
-    margin-top: 20px;
 }
 
 @media screen and (min-width: 750px) and (max-width: 1250px){

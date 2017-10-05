@@ -1,9 +1,13 @@
+.table_inline_block {
+    display: inline-block;
+}
+
 .table_padding{
-    padding: 15px;
+    padding: 12px;
 }
 
 .table_row_size{
-    width:20rem;
+    width:15rem;
 }
 
 .table_row_margin{

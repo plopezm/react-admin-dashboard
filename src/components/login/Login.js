@@ -47,23 +47,25 @@ class Login extends React.Component {
     }
 
     render() {
-        // console.log(this.context);
         return (
             <div className="loginBox card">
-                <div className="mx-auto loginTitleMargin">
-                    <h1 className="center-block">MyApp</h1>
+                <div className="card-header">
+                    <div className="centerized top-bottom-separation">
+                        <h1 className="title">MyApp</h1>
+                    </div>
                 </div>
-                <div>
-                    <form className="container" onSubmit={this.onPushSubmit}>
-                        <hr/>
-                        <div className="form-group">
-                            <input className="form-control" type="text" onChange={this.handleUser} placeholder="Username" />
+                <div className="card-content">
+                    <form onSubmit={this.onPushSubmit}>
+                        <div className="field">
+                            <label class="label">Username</label>
+                            <input className="input" type="text" onChange={this.handleUser} placeholder="example@domain.com" />
                         </div>
-                        <div className="form-group">
-                            <input className="form-control" onChange={this.handlePassword} type="password" placeholder="Password"/>
+                        <div className="field">
+                            <label class="label">Password</label>
+                            <input className="input" onChange={this.handlePassword} type="password" placeholder="******"/>
                         </div>
-                        <div className="form-group">
-                                <input type="submit" className="btn btn-primary" value="Sign in" />
+                        <div className="field">
+                                <input type="submit" className="button" value="Sign in" />
                         </div>
                     </form>
                 </div>

@@ -3,3 +3,17 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.centerized {
+  margin:auto;
+  padding: auto;
+}
+
+.top-bottom-separation {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.cursor_pointer {
+  cursor: pointer;
+}

@@ -20,8 +20,8 @@ class CardRow extends React.Component {
                     </div>
                 </div>
                 <footer className="card-footer">
-                    <a className="card-footer-item" onClick={() => {if(this.props.onEdit instanceof Function){this.props.onEdit(this.props)}}}>Edit</a>
-                    <a className="card-footer-item" onClick={() => {if(this.props.onDelete instanceof Function){this.props.onDelete(this.props)}}}>Delete</a>
+                    <a className="card-footer-item" onClick={() => {if(this.props.onEdit instanceof Function){this.props.onEdit(this.props.object)}}}>Edit</a>
+                    <a className="card-footer-item" onClick={() => {if(this.props.onDelete instanceof Function){this.props.onDelete(this.props.object)}}}>Delete</a>
                 </footer>
             </div>
         );

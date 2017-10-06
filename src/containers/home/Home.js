@@ -35,6 +35,16 @@ class Home extends React.Component {
         super(props);
     }
 
+    componentWillMount(){
+        exampleObjects.forEach((exampleObject) => {
+            exampleObject.getTitle = function () {
+                return exampleObject.title;
+            };
+            exampleObject.getDescription = function () {
+                return exampleObject.description;
+            };
+        });
+    }
 
     edit(data){
         alert("EDIT: " + JSON.stringify(data));

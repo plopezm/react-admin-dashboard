@@ -11,7 +11,8 @@ class ResponsiveTable extends React.Component {
         if (this.props.objects && this.props.objects.length > 0) {
             let object = this.props.objects[0];
             return Object.keys(object).map((key) => {
-                return <th key={key}>{key}</th>
+                if(!(object[key] instanceof Function))
+                    return <th key={key}>{key}</th>
             });
         }
     }

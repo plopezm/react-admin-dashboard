@@ -57,11 +57,11 @@ class Login extends React.Component {
                 <div className="card-content">
                     <form onSubmit={this.onPushSubmit}>
                         <div className="field">
-                            <label class="label">Username</label>
+                            <label className="label">Username</label>
                             <input className="input" type="text" onChange={this.handleUser} placeholder="example@domain.com" />
                         </div>
                         <div className="field">
-                            <label class="label">Password</label>
+                            <label className="label">Password</label>
                             <input className="input" onChange={this.handlePassword} type="password" placeholder="******"/>
                         </div>
                         <div className="field">

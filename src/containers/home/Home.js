@@ -1,10 +1,12 @@
 import React from 'react';
-import isAuthenticated from "../authentication/AuthenticationWrapper";
+import isAuthenticated from "../../components/authentication/AuthenticationWrapper";
 
-import NavBar from "./navbar/NavBar"
-import CardTable from "./cardtable/CardTable";
+import NavBar from "../../components/navbar/NavBar"
+import CardTable from "../../components/cardtable/CardTable";
+import ResponsiveTable from '../../components/rtable/ResponsiveTable';
+import './Home.css';
 
-const objects = [
+const exampleObjects = [
     {
         "title": "Table 1",
         "description": "Table 1",
@@ -46,7 +48,8 @@ class Home extends React.Component {
         return (
             <div>
                 <NavBar title="ExampleApp" logo="/logo.png"/>
-                <CardTable objects={objects} onEdit={this.edit} onDelete={this.delete}/>
+                <CardTable objects={exampleObjects} onEdit={this.edit} onDelete={this.delete}/>
+                <ResponsiveTable objects={exampleObjects} className="is-striped is-narrow table_centered"/>
             </div>
         );
     }

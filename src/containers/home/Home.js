@@ -8,24 +8,24 @@ import './Home.css';
 
 const exampleObjects = [
     {
-        "title": "Table 1",
-        "description": "Table 1",
+        "title": "Row 1",
+        "description": "Row 1 desc",
     },
     {
-        "title": "Table 2",
-        "description": "Table 2",
+        "title": "Row 2",
+        "description": "Row 2 desc",
     },
     {
-        "title": "Table 3",
-        "description": "Table 3",
+        "title": "Row 3",
+        "description": "Row 3 desc",
     },
     {
-        "title": "Table 4",
-        "description": "Table 4",
+        "title": "Row 4",
+        "description": "Row 4 desc",
     },
     {
-        "title": "Table 5",
-        "description": "Table 5",
+        "title": "Row 5",
+        "description": "Row 5 desc",
     }
 ]
 
@@ -49,7 +49,7 @@ class Home extends React.Component {
             <div>
                 <NavBar title="ExampleApp" logo="/logo.png"/>
                 <CardTable objects={exampleObjects} onEdit={this.edit} onDelete={this.delete}/>
-                <ResponsiveTable objects={exampleObjects} className="is-striped is-narrow table_centered"/>
+                <ResponsiveTable objects={exampleObjects} className="is-striped is-narrow table_centered" onEdit={this.edit} onDelete={this.delete}/>
             </div>
         );
     }

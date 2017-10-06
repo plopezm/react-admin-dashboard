@@ -19,9 +19,7 @@ class ResponsiveTable extends React.Component {
     renderValues(){
         if (this.props.objects && this.props.objects.length > 0) {
             return this.props.objects.map((object, index) => {
-                return Object.keys(object).map((key) => {
-                    return <ResponsiveRow object={object}/>
-                });
+                return <ResponsiveRow key={index} object={object} onEdit={this.props.onEdit} onDelete={this.props.onDelete}/>
             });
         }
     }
@@ -32,6 +30,11 @@ class ResponsiveTable extends React.Component {
                 <thead>
                 <tr>
                     {this.renderHeaders()}
+                    <td>
+                        <span className="icon">
+                            <i className="fa fa-cog" aria-hidden="true"></i>
+                        </span>
+                    </td>
                 </tr>
                 </thead>
                 <tbody>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-    API_URL, VALIDATE_PATH, SIGNIN_PATH,
+    AUTHORIZATION_API_URL, VALIDATE_PATH, SIGNIN_PATH,
     SIGNOUT_PATH, VALIDATE_METHOD,  SIGNIN_METHOD, SIGNOUT_METHOD
 } from '../configurations/Config'
 import {SIGN_IN, SIGN_OUT, VALIDATE} from './ActionTypes';
@@ -10,7 +10,7 @@ export function validate(authorizationType, token) {
     return function (dispatch, getState) {
         axios({
             method: VALIDATE_METHOD,
-            url: `${API_URL}${VALIDATE_PATH}`,
+            url: `${AUTHORIZATION_API_URL}${VALIDATE_PATH}`,
             headers: {
                 'Authorization': authorizationType+' '+token,
             },
@@ -29,7 +29,7 @@ export function authenticate(user, passwd){
     return function (dispatch, getState) {
         axios({
             method: SIGNIN_METHOD,
-            url: `${API_URL}${SIGNIN_PATH}`,
+            url: `${AUTHORIZATION_API_URL}${SIGNIN_PATH}`,
             headers: {
                 'Authorization': 'Basic '+btoa(user+":"+passwd),
             },

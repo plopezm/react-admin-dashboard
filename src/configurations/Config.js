@@ -3,8 +3,8 @@
  * - AuthenticationActions has the functions to perform the loggin based on this config file
  */
 
-const SERVER_URL = 'http://localhost:9090';
-export const API_URL = `${SERVER_URL}/api/v1`;
+const AUTHORIZATION_SERVER_URL = 'http://localhost:9090';
+export const AUTHORIZATION_API_URL = `${AUTHORIZATION_SERVER_URL}/api/v1`;
 
 export const VALIDATE_PATH = '/validate';
 export const VALIDATE_METHOD = 'GET';

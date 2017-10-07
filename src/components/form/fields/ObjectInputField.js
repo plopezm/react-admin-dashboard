@@ -5,11 +5,16 @@ class ObjectInputField extends React.Component {
     constructor(props){
         super(props);
         this.onChange = this.onChange.bind(this);
+        if(this.props.type){
+            this.state = {type:this.props.type};
+        }else{
+            this.state = {type:"text"};
+        }
     }
 
     onChange(e){
         if(this.props.onChange){
-            this.props.onChange(e);
+            this.props.onChange(this.props.label, e.target.value);
         }
     }
 
@@ -47,12 +52,19 @@ class ObjectInputField extends React.Component {
         return '';
     }
 
+    renderInput(){
+        if(this.props.type === 'number')
+            return <input className={`input ${this.props.inputClass}`} type={this.state.type}  placeholder={this.props.placeholder} value={this.props.value}  onChange={this.onChange} onKeyUp={this.onChange} onKeyDown={this.onChange} onMouseUp={this.onChange} onMouseDown={this.onChange}/>
+        else
+            return <input className={`input ${this.props.inputClass}`} type={this.state.type}  placeholder={this.props.placeholder} value={this.props.value}  onChange={this.onChange}/>
+    }
+
     render(){
         return(
             <div className="field">
                 <label className="label">{this.props.label}</label>
                 <div className={`control ${this.hasIconLeft()} ${this.hasIconRight()}`}>
-                    <input className={`input ${this.props.inputClass}`} type="text"  placeholder={this.props.placeholder} value={this.props.value}  onChange={this.onChange}/>
+                    {this.renderInput()}
                     {this.showInputIconLeft()}
                     {this.showInputIconRight()}
                 </div>

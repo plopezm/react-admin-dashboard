@@ -13,15 +13,25 @@ class ObjectSelectField extends React.Component{
                 if(value instanceof Object){
                     return <option key={index} value={value}>{value[this.props.optionsTitleKey]}</option>
                 }else{
-                    return <option key={index} value={value}>{value}</option>
+                    return <option key={index} value={value}>{value.toString()}</option>
                 }
             });
         }
     }
 
+    parseSelectValue(value){
+        if(value == "true"){
+            return true;
+        }else if(value == "false"){
+            return false;
+        }else{
+            return value;
+        }
+    }
+
     onChange(e){
         if(this.props.onChange){
-            this.props.onChange(e);
+            this.props.onChange(this.props.label, this.parseSelectValue(e.target.value));
         }
     }
 

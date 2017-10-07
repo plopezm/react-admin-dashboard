@@ -1,39 +1,68 @@
 import React from 'react';
-import ObjectInputField from "./ObjectInputField";
-import ObjectSelectField from "./ObjectSelectField";
-import ObjectTextAreaField from "./ObjectTextAreaField";
-import ObjectCheckboxField from "./ObjectCheckboxField";
+import ObjectInputField from "./fields/ObjectInputField";
+import ObjectSelectField from "./fields/ObjectSelectField";
+import ObjectTextAreaField from "./fields/ObjectTextAreaField";
+import ObjectCheckboxField from "./fields/ObjectCheckboxField";
 
 
 class ObjectFormulary extends React.Component {
     constructor(props){
         super(props);
+        this.state={object: this.props.object};
         this.onSubmit = this.onSubmit.bind(this);
         this.onCancel = this.onCancel.bind(this);
+        this.onChange = this.onChange.bind(this);
+    }
+
+    componentWillMount(){
+
     }
 
     onSubmit(e){
         e.preventDefault();
         if(this.props.onSubmit){
-            this.props.onSubmit(e);
+            this.props.onSubmit(this.state.object);
         }
     }
+
     onCancel(){
         if(this.props.onCancel)
             this.props.onCancel();
     }
+
+    onChange(key, value){
+        console.log("changed label ", key, " with value: ",value);
+        let newObject = Object.assign({} , this.state.object);
+        newObject[key] = value;
+        this.setState({object:newObject});
+    }
+
+    renderFieldsFromObject(object){
+        if(!object)
+            return <div>No object found</div>
+
+        return Object.keys(object).map((key) => {
+            if(typeof object[key] === 'string'){
+                if(object[key].length > 40){
+                    return <ObjectTextAreaField key={key} label={key} value={object[key]} onChange={this.onChange}/>
+                }else{
+                    return <ObjectInputField key={key} label={key} value={object[key]} onChange={this.onChange}/>
+                }
+            }else if(typeof object[key] === 'number'){
+                return <ObjectInputField key={key} label={key} type="number" value={object[key]} onChange={this.onChange}/>
+            }else if(typeof object[key] === 'boolean'){
+                return <ObjectSelectField key={key} label={key} value={object[key]} options={[true, false]} optionsTitleKey="" onChange={this.onChange}/>
+            }
+        });
+
+    }
+
     render() {
         return (
             <div className={this.props.className}>
+                <h1 className="title">{this.props.title}</h1>
                 <form onSubmit={this.onSubmit}>
-                    <ObjectInputField label="Name" placeholder="Text input"/>
-                    <ObjectInputField label="Username" placeholder="UserExample" inputIconLeft="fa fa-user" onChange={(e) => console.log("Input value: ",e.target.value)}/>
-                    <ObjectInputField label="Email" placeholder="Email input" inputClass="is-danger" inputIconLeft="fa fa-envelope" inputIconRight="fa fa-warning"/>
-                    <ObjectSelectField label="Subject" options={[{"title":"Select Subject..."}, {"title": "Subject1"}, {"title":"Subject2"}]} optionsTitleKey="title" onChange={(e) => console.log("Value changed: ",e.target.value)}/>
-                    <ObjectTextAreaField label="Message" placeholder="..." value="Text area example text" onChange={(e) => console.log("TextArea value: ",e.target.value)}/>
-                    <ObjectCheckboxField label="I agree to the <a href='#'>terms and conditions</a>" onChange={(e) => console.log("Checkbox value: ",e.target.checked)}/>
-                    <ObjectSelectField label="Do you like?" options={["Yes", "No"]} optionsTitleKey="" onChange={(e) => console.log("Value changed: ",e.target.value)}/>
-
+                    {this.renderFieldsFromObject(this.state.object)}
                     <div className="field is-grouped">
                         <div className="control">
                             <input type="submit" className="button is-primary" value="Submit"/>

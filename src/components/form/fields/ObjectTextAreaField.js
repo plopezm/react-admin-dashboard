@@ -9,7 +9,7 @@ class ObjectTextAreaField extends React.Component {
 
     onChange(e){
         if(this.props.onChange){
-            this.props.onChange(e);
+            this.props.onChange(this.props.label, e.target.value);
         }
     }
 

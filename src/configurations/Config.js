@@ -1,11 +1,16 @@
-const SERVER_URL = 'http://localhost:9090/api/v1';
-export const API_URL = `${SERVER_URL}`;
+/**
+ * === Authorization paths and methods ===
+ * - AuthenticationActions has the functions to perform the loggin based on this config file
+ */
+
+const SERVER_URL = 'http://localhost:9090';
+export const API_URL = `${SERVER_URL}/api/v1`;
 
 export const VALIDATE_PATH = '/validate';
-// export const VALIDATE_METHOD = 'GET';
+export const VALIDATE_METHOD = 'GET';
 
 export const SIGNIN_PATH = '/login';
-// export const SIGNIN_METHOD = 'GET';
+export const SIGNIN_METHOD = 'GET';
 
 export const SIGNOUT_PATH = '';
-// export const SIGNOUT_METHOD = 'GET';
+export const SIGNOUT_METHOD = 'GET';

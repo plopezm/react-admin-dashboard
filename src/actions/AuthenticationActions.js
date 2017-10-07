@@ -1,45 +1,49 @@
 import axios from 'axios';
 import {
     API_URL, VALIDATE_PATH, SIGNIN_PATH,
-    SIGNOUT_PATH,
+    SIGNOUT_PATH, VALIDATE_METHOD,  SIGNIN_METHOD, SIGNOUT_METHOD
 } from '../configurations/Config'
 import {SIGN_IN, SIGN_OUT, VALIDATE} from './ActionTypes';
 
 
-export function validate(token) {
+export function validate(authorizationType, token) {
     return function (dispatch, getState) {
-        axios.get(`${API_URL}${VALIDATE_PATH}`, {
+        axios({
+            method: VALIDATE_METHOD,
+            url: `${API_URL}${VALIDATE_PATH}`,
             headers: {
-                'Authorization': 'Bearer '+token,
+                'Authorization': authorizationType+' '+token,
             },
             withCredentials: true,
-        }).then((response) => {
-            console.log("Response from http: ", response);
-            dispatch({type: VALIDATE, payload: {isAuthenticated: true, type: response.data.type, token: response.data.token}});
-        }).catch((error) => {
-            dispatch({type: VALIDATE, payload:{isAuthenticated: false, type:'', token:''}});
-        });
-    }
+        }
+        ).then((response) => {
+                console.log("Response from http: ", response);
+                dispatch({type: VALIDATE, payload: {isAuthenticated: true, ...response.data}});
+            }).catch((error) => {
+                dispatch({type: VALIDATE, payload:{isAuthenticated: false}});
+            });
+        }
 }
 
 export function authenticate(user, passwd){
     return function (dispatch, getState) {
-        axios.get(`${API_URL}${SIGNIN_PATH}`, {
+        axios({
+            method: SIGNIN_METHOD,
+            url: `${API_URL}${SIGNIN_PATH}`,
             headers: {
                 'Authorization': 'Basic '+btoa(user+":"+passwd),
             },
             withCredentials: true,
         }).then((response) => {
-            // console.log("Response from http: ", response);
-            dispatch({type: SIGN_IN, payload: {isAuthenticated: true, type: response.data.type, token: response.data.token}});
+            dispatch({type: SIGN_IN, payload: {isAuthenticated: true, ...response.data}});
         }).catch((error) => {
-            dispatch({type: SIGN_IN, payload:{isAuthenticated: false, type:'', token:''}});
+            dispatch({type: SIGN_IN, payload:{isAuthenticated: false}});
         });
     }
 }
 
 export function logout(){
     return function (dispatch, getState) {
-        dispatch({type: SIGN_OUT, payload:{isAuthenticated: false, type:'', token:''}});
+        dispatch({type: SIGN_OUT, payload:{isAuthenticated: false}});
     }
 }

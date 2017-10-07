@@ -2,10 +2,6 @@ import React from 'react';
 
 
 class CardRow extends React.Component {
-    constructor(props){
-        super(props);
-    }
-
     render(){
         return (
             <div className="card table_row_size table_row_margin table_inline_block">

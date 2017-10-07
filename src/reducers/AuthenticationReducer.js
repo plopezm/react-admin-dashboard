@@ -15,8 +15,6 @@ function setLocalStorageFromState(state) {
 }
 
 function getStateFromLocalStorage() {
-    // console.log(localStorage);
-    // console.log(localStorage.getItem("credentials"));
     if (localStorage.getItem("credentials") === "") {
         return INITIAL_STATE;
     }
@@ -24,15 +22,12 @@ function getStateFromLocalStorage() {
 }
 
 export default function (state = getStateFromLocalStorage(), action) {
-    // console.log("Action received: ",action);
     switch (action.type){
         case VALIDATE:
         case SIGN_IN:
-            // console.log("Payload from action: ", action);
             setLocalStorageFromState(action.payload);
             return Object.assign({}, state, action.payload);
         case SIGN_OUT:
-            // console.log("SIGN OUT: ",action);
             setLocalStorageFromState(action.payload);
             return INITIAL_STATE;
         default:

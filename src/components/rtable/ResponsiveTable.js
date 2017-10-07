@@ -2,17 +2,14 @@ import React from 'react';
 import ResponsiveRow from "./ResponsiveRow";
 
 class ResponsiveTable extends React.Component {
-
-    constructor(props){
-        super(props);
-    }
-
     renderHeaders() {
         if (this.props.objects && this.props.objects.length > 0) {
             let object = this.props.objects[0];
             return Object.keys(object).map((key) => {
-                if(!(object[key] instanceof Function))
+                if(!(object[key] instanceof Function)) {
                     return <th key={key}>{key}</th>
+                }
+                return '';
             });
         }
     }

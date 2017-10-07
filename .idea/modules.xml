@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/gowa-react.iml" filepath="$PROJECT_DIR$/.idea/gowa-react.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ReactTemplatePattern.iml" filepath="$PROJECT_DIR$/.idea/ReactTemplatePattern.iml" />
     </modules>
   </component>
 </project>

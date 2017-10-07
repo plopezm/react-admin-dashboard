@@ -2,8 +2,13 @@ import React from 'react';
 
 class ObjectInputField extends React.Component {
 
+    constructor(props){
+        super(props);
+        this.onChange = this.onChange.bind(this);
+    }
+
     onChange(e){
-        if(!this.props.onChange){
+        if(this.props.onChange){
             this.props.onChange(e);
         }
     }

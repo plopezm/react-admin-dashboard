@@ -2,6 +2,11 @@ import React from 'react';
 
 class ObjectSelectField extends React.Component{
 
+    constructor(props){
+        super(props);
+        this.onChange = this.onChange.bind(this);
+    }
+
     renderOptions(){
         if(this.props.options){
             return this.props.options.map((value, index) =>{
@@ -22,7 +27,7 @@ class ObjectSelectField extends React.Component{
                 <label className="label">{this.props.label}</label>
                 <div className="control">
                     <div className="select">
-                        <select onChange={this.props.onChange}>
+                        <select onChange={this.onChange}>
                             {this.renderOptions()}
                         </select>
                     </div>

@@ -1,7 +1,8 @@
 import React from 'react';
 import Parser from 'html-react-parser';
 
-class ObjectTextAreaField extends React.Component {
+class ObjectCheckboxField extends React.Component {
+
     constructor(props){
         super(props);
         this.onChange = this.onChange.bind(this);
@@ -16,9 +17,11 @@ class ObjectTextAreaField extends React.Component {
     render(){
         return(
             <div className="field">
-                <label className="label">{this.props.label}</label>
                 <div className="control">
-                    <textarea className="textarea" placeholder={this.props.placeholder} onChange={this.onChange}>{Parser(this.props.value)}</textarea>
+                    <label className="checkbox">
+                        <input type="checkbox" onClick={this.onChange} />
+                        {Parser(this.props.label)}
+                    </label>
                 </div>
             </div>
         );
@@ -26,4 +29,4 @@ class ObjectTextAreaField extends React.Component {
     }
 }
 
-export default ObjectTextAreaField;
+export default ObjectCheckboxField;

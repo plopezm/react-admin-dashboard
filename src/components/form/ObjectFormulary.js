@@ -1,6 +1,7 @@
 import React from 'react';
 import ObjectInputField from "./ObjectInputField";
 import ObjectSelectField from "./ObjectSelectField";
+import ObjectTextAreaField from "./ObjectTextAreaField";
 
 
 class ObjectFormulary extends React.Component {
@@ -16,13 +17,7 @@ class ObjectFormulary extends React.Component {
                     <ObjectInputField label="Username" placeholder="UserExample" inputIconLeft="fa fa-user"/>
                     <ObjectInputField label="Email" placeholder="Email input" inputClass="is-danger" inputIconLeft="fa fa-envelope" inputIconRight="fa fa-warning"/>
                     <ObjectSelectField label="Subject" options={[{"title":"Select Subject..."}, {"title": "Subject1"}, {"title":"Subject2"}]} optionsTitleKey="title" onChange={(e) => console.log("Value changed: ",e.target.value)}/>
-
-                    <div className="field">
-                        <label className="label">Message</label>
-                        <div className="control">
-                            <textarea className="textarea" placeholder="Textarea"></textarea>
-                        </div>
-                    </div>
+                    <ObjectTextAreaField label="Message" placeholder="..." value="Text area example text" />
 
                     <div className="field">
                         <div className="control">

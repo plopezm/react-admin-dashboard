@@ -10,7 +10,11 @@ class ObjectSelectField extends React.Component{
     renderOptions(){
         if(this.props.options){
             return this.props.options.map((value, index) =>{
-                return <option key={index} value={value}>{value[this.props.optionsTitleKey]}</option>
+                if(value instanceof Object){
+                    return <option key={index} value={value}>{value[this.props.optionsTitleKey]}</option>
+                }else{
+                    return <option key={index} value={value}>{value}</option>
+                }
             });
         }
     }

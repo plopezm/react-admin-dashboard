@@ -7,12 +7,12 @@ class CardRow extends React.Component {
             <div className="card table_row_size table_row_margin table_inline_block">
                 <header className="card-header">
                     <p className="card-header-title is-centered">
-                        {this.props.title}
+                        {this.props.object[this.props.titleKey]}
                     </p>
                 </header>
                 <div className="card-content">
                     <div className="content">
-                        {this.props.description}
+                        {this.props.object[this.props.descriptionKey]}
                     </div>
                 </div>
                 <footer className="card-footer">

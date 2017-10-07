@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {
     AUTHORIZATION_API_URL, VALIDATE_PATH, SIGNIN_PATH,
-    SIGNOUT_PATH, VALIDATE_METHOD,  SIGNIN_METHOD, SIGNOUT_METHOD
+    VALIDATE_METHOD,  SIGNIN_METHOD
 } from '../configurations/Config'
 import {SIGN_IN, SIGN_OUT, VALIDATE} from './ActionTypes';
 
@@ -17,7 +17,6 @@ export function validate(authorizationType, token) {
             withCredentials: true,
         }
         ).then((response) => {
-                console.log("Response from http: ", response);
                 dispatch({type: VALIDATE, payload: {isAuthenticated: true, ...response.data}});
             }).catch((error) => {
                 dispatch({type: VALIDATE, payload:{isAuthenticated: false}});

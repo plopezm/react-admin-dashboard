@@ -5,6 +5,7 @@ import NavBar from "../../components/navbar/NavBar"
 import CardTable from "../../components/cardtable/CardTable";
 import ResponsiveTable from '../../components/rtable/ResponsiveTable';
 import './Home.css';
+import ObjectFormulary from "../../components/form/ObjectFormulary";
 
 const exampleObjects = [
     {
@@ -38,17 +39,6 @@ class Home extends React.Component {
         this.delete = this.delete.bind(this);
     }
 
-    componentWillMount(){
-        exampleObjects.forEach((exampleObject) => {
-            exampleObject.getTitle = function () {
-                return exampleObject.title;
-            };
-            exampleObject.getDescription = function () {
-                return exampleObject.description;
-            };
-        });
-    }
-
     edit(data){
         alert("EDIT: " + JSON.stringify(data));
     }
@@ -62,7 +52,10 @@ class Home extends React.Component {
             <div>
                 <NavBar title="ExampleApp" logo="/logo.png"/>
                 <CardTable objects={exampleObjects} onEdit={this.edit} onDelete={this.delete}/>
-                <ResponsiveTable objects={exampleObjects} className="is-striped is-narrow table_centered" onEdit={this.edit} onDelete={this.delete}/>
+                <hr/>
+                <ResponsiveTable objects={exampleObjects} className="is-striped is-narrow content_centered" onEdit={this.edit} onDelete={this.delete}/>
+                <hr/>
+                <ObjectFormulary className="content_centered"/>
             </div>
         );
     }

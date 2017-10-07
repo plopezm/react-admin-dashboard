@@ -9,7 +9,6 @@ class ResponsiveTable extends React.Component {
                 if(!(object[key] instanceof Function)) {
                     return <th key={key}>{key}</th>
                 }
-                return '';
             });
         }
     }

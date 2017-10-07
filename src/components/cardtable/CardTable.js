@@ -12,7 +12,7 @@ class CardTable extends React.Component {
             <div className="row table_padding">
                 {
                   this.props.objects.map((object, index) =>{
-                      return  <CardRow title={object.getTitle()} description={object.getDescription()} object={object} key={index} onEdit={this.props.onEdit} onDelete={this.props.onDelete}/>
+                      return  <CardRow titleKey="title" descriptionKey="description" object={object} onEdit={this.props.onEdit} onDelete={this.props.onDelete} key={index}/>
                   })
                 }
             </div>

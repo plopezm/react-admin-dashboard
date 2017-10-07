@@ -8,7 +8,6 @@ class ResponsiveRow extends React.Component {
                 if(!(this.props.object[key] instanceof Function)) {
                     return <td key={key}>{this.props.object[key]}</td>;
                 }
-                return '';
             });
         }
     }

@@ -6,9 +6,6 @@ export const SIGN_OUT = 'SIGN_OUT';
 export const VALIDATE = 'VALIDATE-SESSION'
 
 /**
- * CRUDActions
+ * DataModel actions
  */
-export const FETCH = 'FETCH';
-export const CREATE = 'CREATE';
-export const UPDATE = 'UPDATE';
-export const DELETE = 'DELETE';
+export const SHOW_DATAMODEL = 'SHOWDATAMODEL';

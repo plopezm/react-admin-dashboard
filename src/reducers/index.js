@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 
 import AuthenticationReducer from './AuthenticationReducer';
-import CRUDReducer from "./CRUDReducer";
+import DataModelReducer from './DataModelsReducer';
 
 const allReducers = combineReducers({
     authentication: AuthenticationReducer,
-    app: CRUDReducer
+    models: DataModelReducer
 });
 
 export default allReducers;

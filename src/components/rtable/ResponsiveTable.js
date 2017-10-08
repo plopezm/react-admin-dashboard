@@ -16,14 +16,14 @@ class ResponsiveTable extends React.Component {
     renderValues(){
         if (this.props.objects && this.props.objects.length > 0) {
             return this.props.objects.map((object, index) => {
-                return <ResponsiveRow key={index} object={object} onEdit={this.props.onEdit} onDelete={this.props.onDelete}/>
+                return <ResponsiveRow key={index} object={object} onClick={this.props.onClick} onEdit={this.props.onEdit} onDelete={this.props.onDelete}/>
             });
         }
     }
 
     render(){
         return (
-            <table className={`table ${this.props.className}`}>
+            <table className={`table ${this.props.className}`} >
                 <thead>
                 <tr>
                     {this.renderHeaders()}

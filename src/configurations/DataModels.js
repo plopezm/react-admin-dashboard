@@ -3,7 +3,7 @@
  */
 // This models will be used to list the tables and then, when one is selected, the resource will be requested
 
-export const Role = {
+const Role = {
     title: "Roles",
     description: "This table maintains the Roles",
     path: "/roles",
@@ -12,7 +12,7 @@ export const Role = {
     primaryKey: "ID"
 };
 
-export const User = {
+const User = {
     title: "Users",
     description: "This table maintains the Users",
     path: "/users",

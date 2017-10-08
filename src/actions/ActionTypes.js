@@ -8,4 +8,5 @@ export const VALIDATE = 'VALIDATE-SESSION'
 /**
  * DataModel actions
  */
+export const GET_ELEMENT_BY_ID = 'GET_ELEMENT_BY_ID';
 export const GET_ALL_FROM_MODEL_PATH = 'SHOWDATAMODEL';

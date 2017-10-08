@@ -72,7 +72,6 @@ class ObjectFormulary extends React.Component {
                         </div>
                     </div>
                 </form>
-                <hr/>
             </div>
         );
     }

@@ -5,7 +5,7 @@ import DataModelReducer from './DataModelsReducer';
 
 const allReducers = combineReducers({
     authentication: AuthenticationReducer,
-    models: DataModelReducer
+    datamodels: DataModelReducer
 });
 
 export default allReducers;

@@ -9,7 +9,7 @@ export var Role = {
     path: "/roles",
     authType: "Bearer",
     hidden: [],
-    primaryKeys: ["id"]
+    primaryKey: "ID"
 };
 
 export var User = {
@@ -18,7 +18,7 @@ export var User = {
     path: "/users",
     authType: "Bearer",
     hidden: [],
-    primaryKeys: ["id"],
+    primaryKey: "ID",
     relations: {
         "role": {model: Role}
     }

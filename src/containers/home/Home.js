@@ -1,12 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import isAuthenticated from "../../components/authentication/AuthenticationWrapper";
-import {showModel} from "../../actions/DataModelsActions";
+import './Home.css';
 
 import NavBar from "../../components/navbar/NavBar"
 import CardTable from "../../components/cardtable/CardTable";
 import ResponsiveTable from '../../components/rtable/ResponsiveTable';
-import './Home.css';
 import ObjectFormulary from "../../components/form/ObjectFormulary";
 
 // const exampleObjects = [
@@ -36,6 +36,9 @@ import ObjectFormulary from "../../components/form/ObjectFormulary";
 // ];
 
 class Home extends React.Component {
+    static contextTypes = {
+        router: PropTypes.object.isRequired
+    };
 
     constructor(props) {
         super(props);
@@ -46,8 +49,8 @@ class Home extends React.Component {
     }
 
     show(data){
-        alert("EDIT: " + JSON.stringify(data));
-        this.props.showModel(this.props.authentication, data);
+        console.log("EDIT: " + JSON.stringify(data));
+        this.props.history.push(data.path);
     }
 
     edit(data){
@@ -66,7 +69,7 @@ class Home extends React.Component {
         return (
             <div>
                 <NavBar title="ExampleApp" logo="/logo.png"/>
-                <CardTable objects={this.props.tables.models} onShow={this.show}/>
+                <CardTable objects={this.props.tables} onShow={this.show}/>
                 {/*<hr/>*/}
                 {/*<ResponsiveTable objects={exampleObjects} className="is-striped is-narrow content_centered" onEdit={this.edit} onDelete={this.delete}/>*/}
                 {/*<hr/>*/}
@@ -77,7 +80,7 @@ class Home extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {tables: state.models};
+    return {tables: state.datamodels.models};
 }
 
-export default isAuthenticated(connect(mapStateToProps, {showModel})(Home));
+export default isAuthenticated(connect(mapStateToProps)(Home));

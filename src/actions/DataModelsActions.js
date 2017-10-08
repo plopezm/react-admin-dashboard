@@ -1,9 +1,9 @@
 import axios from 'axios';
-import {SHOW_DATAMODEL} from "./ActionTypes";
+import {GET_ALL_FROM_MODEL_PATH} from "./ActionTypes";
 import {APP_API_URL} from "../configurations/Config";
 
 
-export function showModel(authorization, datamodel) {
+export function getAll(authorization, datamodel) {
     return function (dispatch, getState) {
         axios({
             method: 'GET',
@@ -14,9 +14,9 @@ export function showModel(authorization, datamodel) {
             withCredentials: true,
             dataType:'jsonp',
         }).then((response) => {
-            return dispatch({type: SHOW_DATAMODEL, payload: response.body});
+            return dispatch({type: GET_ALL_FROM_MODEL_PATH, payload: response.data});
         }).catch((error) => {
-            return dispatch({type: SHOW_DATAMODEL, payload: []});
+            return dispatch({type: GET_ALL_FROM_MODEL_PATH, payload: []});
         });
 
     }

@@ -12,6 +12,7 @@ export function showModel(authorization, datamodel) {
                 'Authorization': `${authorization.type} ${authorization.token}`,
             },
             withCredentials: true,
+            dataType:'jsonp',
         }).then((response) => {
             return dispatch({type: SHOW_DATAMODEL, payload: response.body});
         }).catch((error) => {

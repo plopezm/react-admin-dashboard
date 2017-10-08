@@ -18,7 +18,7 @@ class ObjectTextAreaField extends React.Component {
             <div className="field">
                 <label className="label">{this.props.label}</label>
                 <div className="control">
-                    <textarea className="textarea" placeholder={this.props.placeholder} onChange={this.onChange}>{Parser(this.props.value)}</textarea>
+                    <textarea className="textarea" placeholder={this.props.placeholder} onChange={this.onChange} value={Parser(this.props.value)}></textarea>
                 </div>
             </div>
         );

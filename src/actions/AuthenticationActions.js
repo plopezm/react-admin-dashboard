@@ -15,8 +15,8 @@ export function validate(authorizationType, token) {
                 'Authorization': authorizationType+' '+token,
             },
             withCredentials: true,
-        }
-        ).then((response) => {
+            dataType:'jsonp',
+        }).then((response) => {
                 dispatch({type: VALIDATE, payload: {isAuthenticated: true, ...response.data}});
             }).catch((error) => {
                 dispatch({type: VALIDATE, payload:{isAuthenticated: false}});
@@ -33,6 +33,7 @@ export function authenticate(user, passwd){
                 'Authorization': 'Basic '+btoa(user+":"+passwd),
             },
             withCredentials: true,
+            dataType:'jsonp',
         }).then((response) => {
             dispatch({type: SIGN_IN, payload: {isAuthenticated: true, ...response.data}});
         }).catch((error) => {

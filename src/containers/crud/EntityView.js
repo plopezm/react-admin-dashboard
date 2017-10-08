@@ -1,26 +1,44 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import authenticate from '../../components/authentication/AuthenticationWrapper';
-import ObjectFormulary from "../../components/form/ObjectFormulary";
+import {getAll} from "../../actions/DataModelsActions";
+import NavBar from '../../components/navbar/NavBar';
+import ResponsiveTable from "../../components/rtable/ResponsiveTable";
 
-class CRUDPanel extends React.Component {
+class EntityView extends React.Component {
 
-    onSubmitForm(object){
-        alert("Object: "+JSON.stringify(object));
+    constructor(props){
+        super(props);
+        console.log("Received props: ", props);
+    }
+
+    componentWillMount(){
+        this.props.getAll(this.props.authentication, this.props.datamodel);
+    }
+
+    onEdit(object){
+        console.log("EDITING: ", object);
+    }
+
+    onDelete(object){
+        console.log("DELETING: ", object);
     }
 
     render(){
         return (
             <div>
-                <ObjectFormulary title={`Formulary '${this.props.title}'`} className="content_centered" object={this.props.object} onSubmit={this.onSubmitForm}/>
+                <NavBar title="ExampleApp" logo="/logo.png"/>
+                <ResponsiveTable objects={this.props.objects} className="is-striped is-narrow content_centered" onEdit={this.onEdit} onDelete={this.onDelete}/>
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    return {object: state.app.selectedObject,
-            title: state.app.selectedObjectName};
+    console.log("MappedState: ",state);
+    return {
+        objects: state.datamodels.data
+    };
 }
 
-export default authenticate(connect(nil,nil)(CRUDPanel));
+export default authenticate(connect(mapStateToProps, {getAll})(EntityView));

@@ -1,8 +1,8 @@
-import {User, Role} from "../configurations/DataModels";
+import {ALL_MODELS} from "../configurations/DataModels";
 import {GET_ALL_FROM_MODEL_PATH} from "../actions/ActionTypes";
 
 const INITIAL_STATE = {
-    models: [Role, User],
+    models: ALL_MODELS,
     data:[]
 };
 

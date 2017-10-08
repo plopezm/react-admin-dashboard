@@ -3,18 +3,18 @@
  */
 // This models will be used to list the tables and then, when one is selected, the resource will be requested
 
-export var Role = {
+export const Role = {
     title: "Roles",
-    description: "This table maintain the Roles",
+    description: "This table maintains the Roles",
     path: "/roles",
     authType: "Bearer",
     hidden: [],
     primaryKey: "ID"
 };
 
-export var User = {
+export const User = {
     title: "Users",
-    description: "This table maintain the Users",
+    description: "This table maintains the Users",
     path: "/users",
     authType: "Bearer",
     hidden: [],
@@ -23,3 +23,5 @@ export var User = {
         "role": {model: Role}
     }
 };
+
+export const ALL_MODELS = [Role, User];

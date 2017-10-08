@@ -5,7 +5,10 @@ class ResponsiveRow extends React.Component {
     renderColumns(){
         if(this.props.object){
             return Object.keys(this.props.object).map((key) => {
-                if(!(this.props.object[key] instanceof Function)) {
+                //TODO: Object type must be supported
+                if (this.props.object[key] instanceof Object){
+                    return <td key={key}>{JSON.stringify(this.props.object[key])}</td>;
+                }else if(!(this.props.object[key] instanceof Function)) {
                     return <td key={key}>{this.props.object[key]}</td>;
                 }
             });

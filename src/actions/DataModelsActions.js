@@ -2,7 +2,6 @@ import axios from 'axios';
 import {GET_ALL_FROM_MODEL_PATH} from "./ActionTypes";
 import {APP_API_URL} from "../configurations/Config";
 
-
 export function getAll(authorization, datamodel) {
     return function (dispatch, getState) {
         axios({

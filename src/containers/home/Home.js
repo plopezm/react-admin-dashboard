@@ -49,7 +49,6 @@ class Home extends React.Component {
     }
 
     show(data){
-        console.log("EDIT: " + JSON.stringify(data));
         this.props.history.push(data.path);
     }
 

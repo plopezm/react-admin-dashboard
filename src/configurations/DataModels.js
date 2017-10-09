@@ -8,7 +8,7 @@ const Role = {
     description: "This table maintains the Roles",
     path: "/roles",
     authType: "Bearer",
-    hidden: [],
+    nameKey: "Name",
     primaryKey: "ID"
 };
 
@@ -17,8 +17,8 @@ const User = {
     description: "This table maintains the Users",
     path: "/users",
     authType: "Bearer",
-    hidden: [],
     primaryKey: "ID",
+    nameKey: "Name",
     relations: {
         "role": {model: Role}
     }

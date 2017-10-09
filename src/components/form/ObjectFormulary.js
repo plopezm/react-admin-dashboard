@@ -31,7 +31,6 @@ class ObjectFormulary extends React.Component {
     }
 
     onChange(key, value){
-        console.log("changed label ", key, " with value: ",value);
         let newObject = Object.assign({} , this.state.object);
         newObject[key] = value;
         this.setState({object:newObject});
@@ -52,6 +51,14 @@ class ObjectFormulary extends React.Component {
                 return <ObjectInputField key={key} label={key} type="number" value={object[key]} onChange={this.onChange}/>
             }else if(typeof object[key] === 'boolean'){
                 return <ObjectSelectField key={key} label={key} value={object[key]} options={[true, false]} optionsTitleKey="" onChange={this.onChange}/>
+            }else if(object[key] instanceof Object){
+                if(this.props.datamodel) {
+                    return <ObjectSelectField key={key} label={key} type="number"
+                                              options={[object[key][this.props.datamodel.nameKey]]}
+                                              onChange={this.onChange} datamodel={this.props.datamodel.relations[key]}/>
+                }else {
+                    return <ObjectTextAreaField key={key} label={key} value={JSON.stringify(object[key])} onChange={this.onChange}/>
+                }
             }
         });
 
@@ -60,7 +67,7 @@ class ObjectFormulary extends React.Component {
     render() {
         return (
             <div className={this.props.className}>
-                <h1 className="title">{this.props.title}</h1>
+                <h1 className="title">{this.props.name}</h1>
                 <form onSubmit={this.onSubmit}>
                     {this.renderFieldsFromObject(this.state.object)}
                     <div className="field is-grouped">

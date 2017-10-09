@@ -19,7 +19,7 @@ class FormView extends React.Component{
     renderForm() {
         if (this.props.object){
             return (
-                <ObjectFormulary title="Formulary" className="content_centered" object={this.props.object} onSubmit={this.onSubmitForm}/>
+                <ObjectFormulary title="Formulary" className="content_centered" object={this.props.object} datamodel={this.props.datamodel} onSubmit={this.onSubmitForm}/>
             );
         }else{
             return <p>Loading...</p>

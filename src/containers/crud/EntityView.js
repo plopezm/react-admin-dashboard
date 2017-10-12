@@ -36,7 +36,7 @@ class EntityView extends React.Component {
         return (
             <div>
                 <NavBar title="ExampleApp" logo="/logo.png"/>
-                <ResponsiveTable objects={this.props.objects} className="is-striped is-narrow content_centered" onClick={this.onClick} onEdit={this.onEdit} onDelete={this.onDelete}/>
+                <ResponsiveTable objects={this.props.objects} datamodel={this.props.datamodel} className="is-striped is-narrow content_centered" onClick={this.onClick} onEdit={this.onEdit} onDelete={this.onDelete}/>
             </div>
         );
     }

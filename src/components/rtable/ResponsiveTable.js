@@ -16,7 +16,7 @@ class ResponsiveTable extends React.Component {
     renderValues(){
         if (this.props.objects && this.props.objects.length > 0) {
             return this.props.objects.map((object, index) => {
-                return <ResponsiveRow key={index} object={object} onClick={this.props.onClick} onEdit={this.props.onEdit} onDelete={this.props.onDelete}/>
+                return <ResponsiveRow key={index} object={object} datamodel={this.props.datamodel} onClick={this.props.onClick} onEdit={this.props.onEdit} onDelete={this.props.onDelete}/>
             });
         }
     }

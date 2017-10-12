@@ -76,7 +76,7 @@ class ObjectFormulary extends React.Component {
     render() {
         return (
             <div className={this.props.className}>
-                <h1 className="title">{this.props.name}</h1>
+                <h1 className="title">{`${this.props.title} ${this.props.datamodel.title}`}</h1>
                 <form onSubmit={this.onSubmit}>
                     {this.renderFieldsFromObject(this.state.object)}
                     <div className="field is-grouped">

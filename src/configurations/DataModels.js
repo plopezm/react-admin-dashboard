@@ -20,7 +20,7 @@ const User = {
     primaryKey: "ID",
     nameKey: "Name",
     relations: {
-        "role": {model: Role}
+        "Role": {model: Role}
     }
 };
 

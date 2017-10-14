@@ -1,5 +1,5 @@
 import {ALL_MODELS} from "../configurations/DataModels";
-import {GET_ALL_FROM_MODEL_PATH, GET_ELEMENT_BY_ID} from "../actions/ActionTypes";
+import {CREATE_OBJECT, GET_ALL_FROM_MODEL_PATH, GET_ELEMENT_BY_ID} from "../actions/ActionTypes";
 
 const INITIAL_STATE = {
     models: ALL_MODELS,
@@ -12,6 +12,7 @@ export default function (state = INITIAL_STATE, action) {
             return Object.assign({}, state, {selectedObject: action.payload});
         case GET_ALL_FROM_MODEL_PATH:
             return Object.assign({}, state, {data: action.payload});
+        case CREATE_OBJECT:
         default:
             return state;
     }

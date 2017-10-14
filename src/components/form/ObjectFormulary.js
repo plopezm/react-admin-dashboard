@@ -10,7 +10,7 @@ import {APP_API_URL} from "../../configurations/Config";
 class ObjectFormulary extends React.Component {
     constructor(props){
         super(props);
-        this.state={object: this.props.object === undefined ? {} : this.props.object};
+        this.state={object: this.props.object === undefined ? {} : this.props.object, fetchedModels:{}};
         this.onSubmit = this.onSubmit.bind(this);
         this.onCancel = this.onCancel.bind(this);
         this.onChange = this.onChange.bind(this);
@@ -36,6 +36,7 @@ class ObjectFormulary extends React.Component {
     }
 
     onChange(key, value){
+        console.log("Entro");
         let newObject = Object.assign({} , this.state.object);
         newObject[key] = value;
         this.setState({object:newObject});
@@ -74,8 +75,11 @@ class ObjectFormulary extends React.Component {
 
         return Object.keys(this.props.datamodel.composition).map((key) => {
             if(this.props.datamodel.composition[key] instanceof Object){
+                if(this.state.fetchedModels[key] === undefined){
+                    this.state.fetchedModels[key] = this.fetchModel(this.props.datamodel.relations === undefined ? undefined : this.props.datamodel.relations[key]);
+                }
                 return <ObjectSelectField key={key} label={key} onFetchModel={this.props.onFetchModel} selectedOption={object[key]}
-                                          options={this.fetchModel(this.props.datamodel.relations === undefined ? undefined : this.props.datamodel.relations[key])}
+                                          options={this.state.fetchedModels[key]}
                                           onChange={this.onChange} datamodel={this.props.datamodel.relations === undefined ? undefined : this.props.datamodel.relations[key]}/>
             }else if(this.props.datamodel.composition[key] === "string"){
                 return <ObjectInputField key={key} label={key} value={object[key]} onChange={this.onChange}/>

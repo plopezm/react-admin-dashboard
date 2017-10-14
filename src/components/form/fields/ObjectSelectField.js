@@ -50,6 +50,7 @@ class ObjectSelectField extends React.Component{
 
     onChange(e){
         if(this.props.onChange){
+            console.log(this.props.selectedValue);
             this.props.onChange(this.props.label, JSON.parse(e.target.value));
         }
     }
@@ -57,6 +58,7 @@ class ObjectSelectField extends React.Component{
     getSelected(){
         if(this.props.datamodel && this.props.selectedOption)
             return <option value={this.props.selectedOption}>{this.props.selectedOption[this.props.datamodel.nameKey]}</option>
+        return <option value=""></option>
     }
 
     render(){

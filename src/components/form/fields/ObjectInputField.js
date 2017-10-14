@@ -54,9 +54,9 @@ class ObjectInputField extends React.Component {
 
     renderInput(){
         if(this.props.type === 'number')
-            return <input className={`input ${this.props.inputClass}`} type={this.state.type}  placeholder={this.props.placeholder} value={this.props.value}  onChange={this.onChange} onKeyUp={this.onChange} onKeyDown={this.onChange} onMouseUp={this.onChange} onMouseDown={this.onChange}/>
+            return <input className={`input ${this.props.inputClass}`} type={this.state.type}  placeholder={this.props.placeholder} value={this.props.value == undefined ? "":this.props.value}  onChange={this.onChange} onKeyUp={this.onChange} onKeyDown={this.onChange} onMouseUp={this.onChange} onMouseDown={this.onChange}/>
         else
-            return <input className={`input ${this.props.inputClass}`} type={this.state.type}  placeholder={this.props.placeholder} value={this.props.value}  onChange={this.onChange}/>
+            return <input className={`input ${this.props.inputClass}`} type={this.state.type}  placeholder={this.props.placeholder} value={this.props.value == undefined ? "":this.props.value}  onChange={this.onChange}/>
     }
 
     render(){

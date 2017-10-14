@@ -4,7 +4,7 @@
 // This models will be used to list the tables and then, when one is selected, the resource will be requested
 
 const Role = {
-    title: "Roles",
+    title: "Role",
     description: "This table maintains the Roles",
     path: "/roles",
     authType: "Bearer",
@@ -17,7 +17,7 @@ const Role = {
 };
 
 const User = {
-    title: "Users",
+    title: "User",
     description: "This table maintains the Users",
     path: "/users",
     authType: "Bearer",

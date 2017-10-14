@@ -4,8 +4,9 @@ import {ALL_MODELS} from "../configurations/DataModels";
 
 import Login from '../containers/login/Login'
 import Home from '../containers/home/Home';
-import EntityView from "../containers/crud/EntityView";
-import FormView from "../containers/crud/FormView";
+import EntityView from "../containers/crud/EntityListView";
+import FormView from "../containers/crud/EditView";
+import CreateView from '../containers/crud/CreateView';
 
 export class AppRoutes extends React.Component {
 
@@ -21,11 +22,18 @@ export class AppRoutes extends React.Component {
         });
     }
 
+    renderDynamicCreateForm(){
+        return ALL_MODELS.map((value, index) => {
+            return <Route exact key={index} path={`${value.path}/create`} render={(props) => <CreateView {...props} datamodel={value}/> } />
+        });
+    }
+
     render(){
         return (
             <Switch>
                 <Route exact path="/" component={Login}/>
                 <Route path="/home" component={Home}/>
+                {this.renderDynamicCreateForm()}
                 {this.renderDynamicView()}
                 {this.renderDynamicForm()}
             </Switch>

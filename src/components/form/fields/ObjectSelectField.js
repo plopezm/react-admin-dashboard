@@ -23,10 +23,13 @@ class ObjectSelectField extends React.Component{
     getOptionValues(objects){
         return objects.map((value, index) =>{
             if(value instanceof Object){
-                if(value[this.props.datamodel.model.primaryKey] !== this.props.selectedOption[this.props.datamodel.model.primaryKey])
-                    return <option key={index} value={JSON.stringify(value)}>{value[this.props.datamodel.model.nameKey]}</option>
+                if(!this.props.selectedOption)
+                    return <option key={index} value={JSON.stringify(value)}>{value[this.props.datamodel.nameKey]}</option>;
+                if(value[this.props.datamodel.primaryKey] !== this.props.selectedOption[this.props.datamodel.primaryKey])
+                    return <option key={index} value={JSON.stringify(value)}>{value[this.props.datamodel.nameKey]}</option>;
+
             }else{
-                return <option key={index} value={value}>{value.toString()}</option>
+                return <option key={index} value={value}>{value.toString()}</option>;
             }
         });
     }
@@ -52,8 +55,8 @@ class ObjectSelectField extends React.Component{
     }
 
     getSelected(){
-        if(this.props.datamodel)
-            return <option value={this.props.selectedOption}>{this.props.selectedOption[this.props.datamodel.model.nameKey]}</option>
+        if(this.props.datamodel && this.props.selectedOption)
+            return <option value={this.props.selectedOption}>{this.props.selectedOption[this.props.datamodel.nameKey]}</option>
     }
 
     render(){
@@ -64,7 +67,6 @@ class ObjectSelectField extends React.Component{
                     <div className="select">
                         <select onChange={this.onChange}>
                             {this.getSelected()}
-
                             {this.renderOptions()}
                         </select>
                     </div>

@@ -6,7 +6,7 @@ import {getAll} from "../../actions/DataModelsActions";
 import NavBar from '../../components/navbar/NavBar';
 import ResponsiveTable from "../../components/rtable/ResponsiveTable";
 
-class EntityView extends React.Component {
+class EntityListView extends React.Component {
     static contextTypes = {
         router: PropTypes.object.isRequired
     };
@@ -14,6 +14,7 @@ class EntityView extends React.Component {
     constructor(props){
         super(props);
         this.onClick = this.onClick.bind(this);
+        this.onCreateNewObject = this.onCreateNewObject.bind(this);
     }
 
     componentWillMount(){
@@ -21,11 +22,12 @@ class EntityView extends React.Component {
     }
 
     onClick(object){
+        // Shows edit formulary
         this.props.history.push(`${this.props.datamodel.path}/${object[this.props.datamodel.primaryKey]}`)
     }
 
-    onEdit(object){
-        console.log("EDITING: ", object);
+    onCreateNewObject(object){
+        this.props.history.push(`${this.props.datamodel.path}/create`)
     }
 
     onDelete(object){
@@ -36,7 +38,7 @@ class EntityView extends React.Component {
         return (
             <div>
                 <NavBar title="ExampleApp" logo="/logo.png"/>
-                <ResponsiveTable objects={this.props.objects} datamodel={this.props.datamodel} className="is-striped is-narrow content_centered" onClick={this.onClick} onEdit={this.onEdit} onDelete={this.onDelete}/>
+                <ResponsiveTable objects={this.props.objects} datamodel={this.props.datamodel} className="is-striped is-narrow is-fullwidth" onClick={this.onClick} onCreateNewObject={this.onCreateNewObject} onDelete={this.onDelete}/>
             </div>
         );
     }
@@ -48,4 +50,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default authenticate(connect(mapStateToProps, {getAll})(EntityView));
+export default authenticate(connect(mapStateToProps, {getAll})(EntityListView));

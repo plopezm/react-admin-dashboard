@@ -7,7 +7,7 @@ import ObjectFormulary from "../../components/form/ObjectFormulary";
 import axios from 'axios';
 import {APP_API_URL} from "../../configurations/Config";
 
-class FormView extends React.Component{
+class CreateView extends React.Component{
 
     constructor(props){
         super(props);
@@ -16,17 +16,13 @@ class FormView extends React.Component{
     }
 
     componentWillMount(){
-        this.props.getObjectById(this.props.authentication,  this.props.datamodel,  this.props.match.params[this.props.datamodel.primaryKey]);
     }
 
     componentWillReceiveProps(nextProps){
-        if(this.props.match.params[this.props.datamodel.primaryKey] !== nextProps.match.params[this.props.datamodel.primaryKey]){
-            this.props.getObjectById(nextProps.authentication, nextProps.datamodel, nextProps.match.params[this.props.datamodel.primaryKey]);
-        }
     }
 
     onFetchModel(datamodel){
-        let url = `${APP_API_URL}${datamodel.model.path}`;
+        let url = `${APP_API_URL}${datamodel.path}`;
         return axios({
             method: 'GET',
             url: url,
@@ -38,13 +34,18 @@ class FormView extends React.Component{
         });
     }
 
+    onSubmit(object){
+
+
+    }
+
     renderForm() {
-        if (this.props.object){
+        if (this.props.datamodel){
             return (
-                <ObjectFormulary title="Formulary" className="content_centered" object={this.props.object} datamodel={this.props.datamodel} onSubmit={this.onSubmitForm} onFetchModel={this.onFetchModel}/>
+                <ObjectFormulary title="Create" className="container" datamodel={this.props.datamodel} onSubmit={this.onSubmit} onFetchModel={this.onFetchModel}/>
             );
         }else{
-            return <p>Loading...</p>
+            return <p>Data model not found</p>
         }
     }
 
@@ -62,4 +63,4 @@ function mapStateToProps(state) {
     return {object: state.datamodels.selectedObject};
 }
 
-export default authenticate(connect(mapStateToProps, {getObjectById})(FormView));
+export default authenticate(connect(mapStateToProps, {getObjectById})(CreateView));

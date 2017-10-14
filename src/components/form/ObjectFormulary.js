@@ -10,12 +10,12 @@ import {APP_API_URL} from "../../configurations/Config";
 class ObjectFormulary extends React.Component {
     constructor(props){
         super(props);
-        this.state={object: this.props.object};
+        this.state={object: this.props.object === undefined ? {} : this.props.object};
         this.onSubmit = this.onSubmit.bind(this);
         this.onCancel = this.onCancel.bind(this);
         this.onChange = this.onChange.bind(this);
         this.fetchModel = this.fetchModel.bind(this);
-        this.renderFieldsFromObject = this.renderFieldsFromObject.bind(this);
+        this.renderFieldsFromStateObject = this.renderFieldsFromStateObject.bind(this);
     }
 
     componentWillReceiveProps(nextProps){
@@ -46,39 +46,52 @@ class ObjectFormulary extends React.Component {
             return this.props.onFetchModel(datamodel);
     }
 
-    renderFieldsFromObject(object){
-        if(!object)
-            return <div>No object found</div>
+    renderFieldsFromStateObject(){
+        let object = this.state.object;
+        // if(object){
+        //     return Object.keys(object).map((key) => {
+        //         if(typeof object[key] === 'string'){
+        //             if(object[key].length > 40){
+        //                 return <ObjectTextAreaField key={key} label={key} value={object[key]} onChange={this.onChange}/>
+        //             }else{
+        //                 return <ObjectInputField key={key} label={key} value={object[key]} onChange={this.onChange}/>
+        //             }
+        //         }else if(typeof object[key] === 'number'){
+        //             return <ObjectInputField key={key} label={key} type="number" value={object[key]} onChange={this.onChange}/>
+        //         }else if(typeof object[key] === 'boolean'){
+        //             return <ObjectSelectField key={key} label={key} value={object[key]} opwations={[true, false]} optionsTitleKey="" onChange={this.onChange}/>
+        //         }else if(object[key] instanceof Object){
+        //             if(this.props.datamodel) {
+        //                 return <ObjectSelectField key={key} label={key} onFetchModel={this.props.onFetchModel} selectedOption={object[key]}
+        //                                               options={this.fetchModel(this.props.datamodel.relations === undefined ? undefined : this.props.datamodel.relations[key])}
+        //                                               onChange={this.onChange} datamodel={this.props.datamodel.relations === undefined ? undefined : this.props.datamodel.relations[key]}/>
+        //             }else {
+        //                 return <ObjectTextAreaField key={key} label={key} value={JSON.stringify(object[key])} onChange={this.onChange}/>
+        //             }
+        //         }
+        //     });
+        // }
 
-        return Object.keys(object).map((key) => {
-            if(typeof object[key] === 'string'){
-                if(object[key].length > 40){
-                    return <ObjectTextAreaField key={key} label={key} value={object[key]} onChange={this.onChange}/>
-                }else{
-                    return <ObjectInputField key={key} label={key} value={object[key]} onChange={this.onChange}/>
-                }
-            }else if(typeof object[key] === 'number'){
-                return <ObjectInputField key={key} label={key} type="number" value={object[key]} onChange={this.onChange}/>
-            }else if(typeof object[key] === 'boolean'){
-                return <ObjectSelectField key={key} label={key} value={object[key]} opwations={[true, false]} optionsTitleKey="" onChange={this.onChange}/>
-            }else if(object[key] instanceof Object){
-                if(this.props.datamodel) {
-                    return <ObjectSelectField key={key} label={key} onFetchModel={this.props.onFetchModel} selectedOption={object[key]}
-                                                  options={this.fetchModel(this.props.datamodel.relations === undefined ? undefined : this.props.datamodel.relations[key])}
-                                                  onChange={this.onChange} datamodel={this.props.datamodel.relations === undefined ? undefined : this.props.datamodel.relations[key]}/>
-                }else {
-                    return <ObjectTextAreaField key={key} label={key} value={JSON.stringify(object[key])} onChange={this.onChange}/>
-                }
+        return Object.keys(this.props.datamodel.composition).map((key) => {
+            if(this.props.datamodel.composition[key] instanceof Object){
+                return <ObjectSelectField key={key} label={key} onFetchModel={this.props.onFetchModel} selectedOption={object[key]}
+                                          options={this.fetchModel(this.props.datamodel.relations === undefined ? undefined : this.props.datamodel.relations[key])}
+                                          onChange={this.onChange} datamodel={this.props.datamodel.relations === undefined ? undefined : this.props.datamodel.relations[key]}/>
+            }else if(this.props.datamodel.composition[key] === "string"){
+                return <ObjectInputField key={key} label={key} value={object[key]} onChange={this.onChange}/>
+            }else if(this.props.datamodel.composition[key] === "password"){
+                return <ObjectInputField key={key} type="password" label={key} value={object[key]} onChange={this.onChange}/>
             }
         });
+
     }
 
     render() {
         return (
-            <div className={this.props.className}>
+            <div className={`${this.props.className}`}>
                 <h1 className="title">{`${this.props.title} ${this.props.datamodel.title}`}</h1>
                 <form onSubmit={this.onSubmit}>
-                    {this.renderFieldsFromObject(this.state.object)}
+                    {this.renderFieldsFromStateObject()}
                     <div className="field is-grouped">
                         <div className="control">
                             <input type="submit" className="button is-primary" value="Submit"/>

@@ -9,7 +9,11 @@ const Role = {
     path: "/roles",
     authType: "Bearer",
     nameKey: "Name",
-    primaryKey: "ID"
+    primaryKey: "ID",
+    composition:{
+        "ID": "readonly",
+        "Name": "string"
+    }
 };
 
 const User = {
@@ -18,9 +22,15 @@ const User = {
     path: "/users",
     authType: "Bearer",
     primaryKey: "ID",
-    nameKey: "Name",
+    nameKey: "Email",
+    composition:{
+        "ID": "readonly",
+        "Email": "string",
+        "Password": "password",
+        "Role": Role
+    },
     relations: {
-        "Role": {model: Role}
+        "Role": Role
     }
 };
 

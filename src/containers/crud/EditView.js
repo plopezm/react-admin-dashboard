@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import authenticate from '../../components/authentication/AuthenticationWrapper';
-import {getObjectById} from "../../actions/DataModelsActions";
+import {getObjectById, updateObject} from "../../actions/DataModelsActions";
 import NavBar from '../../components/navbar/NavBar';
 import ObjectFormulary from "../../components/form/ObjectFormulary";
 import axios from 'axios';
@@ -13,6 +13,7 @@ class EditView extends React.Component{
         super(props);
         this.renderForm = this.renderForm.bind(this);
         this.onFetchModel = this.onFetchModel.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     componentWillMount(){
@@ -39,8 +40,9 @@ class EditView extends React.Component{
     }
 
     onSubmit(object){
-
-
+        console.log("Object to update: ", object);
+        this.props.updateObject(this.props.authentication, this.props.datamodel, object);
+        // this.props.history.push(this.props.datamodel.path);
     }
 
     renderForm() {
@@ -67,4 +69,4 @@ function mapStateToProps(state) {
     return {object: state.datamodels.selectedObject};
 }
 
-export default authenticate(connect(mapStateToProps, {getObjectById})(EditView));
+export default authenticate(connect(mapStateToProps, {getObjectById, updateObject})(EditView));

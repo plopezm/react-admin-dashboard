@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import authenticate from '../../components/authentication/AuthenticationWrapper';
-import {getAll} from "../../actions/DataModelsActions";
+import {getAll, deleteObjectById} from "../../actions/DataModelsActions";
 import NavBar from '../../components/navbar/NavBar';
 import ResponsiveTable from "../../components/rtable/ResponsiveTable";
 
@@ -15,6 +15,7 @@ class EntityListView extends React.Component {
         super(props);
         this.onClick = this.onClick.bind(this);
         this.onCreateNewObject = this.onCreateNewObject.bind(this);
+        this.onDelete = this.onDelete.bind(this);
     }
 
     componentWillMount(){
@@ -31,7 +32,7 @@ class EntityListView extends React.Component {
     }
 
     onDelete(object){
-        console.log("DELETING: ", object);
+        this.props.deleteObjectById(this.props.authentication, this.props.datamodel, object[this.props.datamodel.primaryKey])
     }
 
     render(){
@@ -50,4 +51,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default authenticate(connect(mapStateToProps, {getAll})(EntityListView));
+export default authenticate(connect(mapStateToProps, {getAll, deleteObjectById})(EntityListView));

@@ -5,13 +5,19 @@
 export const AUTHORIZATION_SERVER_URL = 'http://localhost:9090';
 export const AUTHORIZATION_API_URL = `${AUTHORIZATION_SERVER_URL}/api/v1`;
 
-export const VALIDATE_PATH = '/validate';
-export const VALIDATE_METHOD = 'GET';
+export const VALIDATE_RESOURCE = {
+    path: '/validate',
+    method: 'GET'
+};
 
-export const SIGNIN_PATH = '/login';
-export const SIGNIN_METHOD = 'GET';
+export const SIGNIN_RESOURCE = {
+    path: '/login',
+    method: 'GET'
+};
 
-export const SIGNOUT_PATH = '';
-export const SIGNOUT_METHOD = 'GET';
+export const SIGNOUT_RESOURCE = {
+    path: '/logout',
+    method: 'GET'
+};
 
 

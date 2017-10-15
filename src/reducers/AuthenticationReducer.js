@@ -1,9 +1,7 @@
 import { SIGN_IN, SIGN_OUT, VALIDATE } from "../actions/ActionTypes";
 
 const INITIAL_STATE = {
-    isAuthenticated: false,
-    token: '',
-    type: ''
+    isAuthenticated: false
 };
 
 function setLocalStorageFromState(state) {

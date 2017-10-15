@@ -6,12 +6,12 @@ import {Provider} from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 
 import store from "./core/store";
-import {App} from './core/router';
+import {AppRoutes} from './core/router';
 
 ReactDOM.render(
     <Provider store={store}>
         <HashRouter>
-            <App/>
+            <AppRoutes/>
         </HashRouter>
     </Provider>
     , document.getElementById('root'));

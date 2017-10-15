@@ -27,7 +27,7 @@ const User = {
         "ID": "readonly",
         "Email": "string",
         "Password": "password",
-        "Role": Role
+        "Role": Role,
     },
     relations: {
         "Role": Role

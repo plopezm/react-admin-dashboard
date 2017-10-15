@@ -36,7 +36,6 @@ class ObjectFormulary extends React.Component {
     }
 
     onChange(key, value){
-        console.log("Entro");
         let newObject = Object.assign({} , this.state.object);
         newObject[key] = value;
         this.setState({object:newObject});
@@ -85,6 +84,8 @@ class ObjectFormulary extends React.Component {
                 return <ObjectInputField key={key} label={key} value={object[key]} onChange={this.onChange}/>
             }else if(this.props.datamodel.composition[key] === "password"){
                 return <ObjectInputField key={key} type="password" label={key} value={object[key]} onChange={this.onChange}/>
+            }else if(this.props.datamodel.composition[key] === 'boolean') {
+                return <ObjectSelectField key={key} label={key} value={object[key]} options={[true, false]} optionsTitleKey="" onChange={this.onChange}/>
             }
         });
 

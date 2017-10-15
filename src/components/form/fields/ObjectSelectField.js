@@ -50,7 +50,6 @@ class ObjectSelectField extends React.Component{
 
     onChange(e){
         if(this.props.onChange){
-            console.log(this.props.selectedValue);
             this.props.onChange(this.props.label, JSON.parse(e.target.value));
         }
     }

@@ -38,7 +38,7 @@ class CreateView extends React.Component{
     renderForm() {
         if (this.props.datamodel){
             return (
-                <ObjectFormulary title="Create" className="container" datamodel={this.props.datamodel} onSubmit={this.onSubmit} onFetchModel={this.onFetchModel}/>
+                <ObjectFormulary title="Create" className="container margin-top-enabled" datamodel={this.props.datamodel} onSubmit={this.onSubmit} onFetchModel={this.onFetchModel}/>
             );
         }else{
             return <p>Data model not found</p>

@@ -48,7 +48,7 @@ class EditView extends React.Component{
     renderForm() {
         if (this.props.object){
             return (
-                <ObjectFormulary title="Edit" className="container" object={this.props.object} datamodel={this.props.datamodel} onSubmit={this.onSubmit} onFetchModel={this.onFetchModel}/>
+                <ObjectFormulary title="Edit" className="container margin-top-enabled" object={this.props.object} datamodel={this.props.datamodel} onSubmit={this.onSubmit} onFetchModel={this.onFetchModel}/>
             );
         }else{
             return <p>Object not set as props</p>

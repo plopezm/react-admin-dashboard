@@ -11,8 +11,9 @@ class ResponsiveRow extends React.Component {
     renderColumns(){
         if(this.props.object){
             return Object.keys(this.props.object).map((key) => {
-                if (this.props.object[key] instanceof Object){
+                if (this.props.object[key] instanceof Object && this.props.datamodel.relations && this.props.datamodel.relations[key]){
                     return <td key={key} className="icon_pointer" onClick={() => this.props.onClick(this.props.object)}>{this.props.object[key][this.props.datamodel.relations[key].nameKey]}</td>;
+
                 }else if(!(this.props.object[key] instanceof Function)) {
                     return <td key={key} className="icon_pointer" onClick={() => this.props.onClick(this.props.object)}>{this.props.object[key]}</td>;
                 }

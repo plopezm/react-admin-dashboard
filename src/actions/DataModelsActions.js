@@ -1,12 +1,12 @@
 import axios from 'axios';
 import {GET_ALL_FROM_MODEL_PATH, GET_ELEMENT_BY_ID, CREATE_OBJECT, UPDATE_OBJECT, DELETE_OBJECT} from "./ActionTypes";
-import {APP_API_URL} from "../configurations/Config";
+import {APP_API_URL} from "../configurations/SecurityConfig";
 
 export function getAll(authorization, datamodel) {
     return function (dispatch, getState) {
         axios({
             method: 'GET',
-            url: `${APP_API_URL}${datamodel.path}`,
+            url: `${datamodel.apiserver}${datamodel.path}`,
             headers: {
                 'Authorization': `${authorization.type} ${authorization.token}`,
             },
@@ -25,7 +25,7 @@ export function getObjectById(authorization, datamodel, id) {
     return function (dispatch, getState) {
         axios({
             method: 'GET',
-            url: `${APP_API_URL}${datamodel.path}/${id}`,
+            url: `${datamodel.apiserver}${datamodel.path}/${id}`,
             headers: {
                 'Authorization': `${authorization.type} ${authorization.token}`,
             },
@@ -45,7 +45,7 @@ export function createObject(authorization, datamodel, object){
     return function (dispatch, getState) {
         axios({
             method: 'POST',
-            url: `${APP_API_URL}${datamodel.path}`,
+            url: `${datamodel.apiserver}${datamodel.path}`,
             data: object,
             headers: {
                 'Authorization': `${authorization.type} ${authorization.token}`,
@@ -66,7 +66,7 @@ export function updateObject(authorization, datamodel, object){
     return function (dispatch, getState) {
         axios({
             method: 'PUT',
-            url: `${APP_API_URL}${datamodel.path}`,
+            url: `${datamodel.apiserver}${datamodel.path}`,
             data: object,
             headers: {
                 'Authorization': `${authorization.type} ${authorization.token}`,
@@ -86,7 +86,7 @@ export function deleteObjectById(authorization, datamodel, id) {
     return function (dispatch, getState) {
         axios({
             method: 'DELETE',
-            url: `${APP_API_URL}${datamodel.path}/${id}`,
+            url: `${datamodel.apiserver}${datamodel.path}/${id}`,
             headers: {
                 'Authorization': `${authorization.type} ${authorization.token}`,
             },

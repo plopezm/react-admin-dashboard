@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
     AUTHORIZATION_API_URL, VALIDATE_PATH, SIGNIN_PATH,
     VALIDATE_METHOD,  SIGNIN_METHOD
-} from '../configurations/Config'
+} from '../configurations/SecurityConfig'
 import {SIGN_IN, SIGN_OUT, VALIDATE} from './ActionTypes';
 
 

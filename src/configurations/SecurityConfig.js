@@ -2,11 +2,6 @@
  * === Authorization paths and methods ===
  * - AuthenticationActions has the functions to perform the loggin based on this config file
  */
-
-
-export const APP_SERVER_URL = 'http://localhost:9090';
-export const APP_API_URL = `${APP_SERVER_URL}/api/v1`;
-
 export const AUTHORIZATION_SERVER_URL = 'http://localhost:9090';
 export const AUTHORIZATION_API_URL = `${AUTHORIZATION_SERVER_URL}/api/v1`;
 

@@ -5,7 +5,6 @@ import {getObjectById, updateObject} from "../../actions/DataModelsActions";
 import NavBar from '../../components/navbar/NavBar';
 import ObjectFormulary from "../../components/form/ObjectFormulary";
 import axios from 'axios';
-import {APP_API_URL} from "../../configurations/Config";
 
 class EditView extends React.Component{
 
@@ -27,7 +26,7 @@ class EditView extends React.Component{
     }
 
     onFetchModel(datamodel){
-        let url = `${APP_API_URL}${datamodel.path}`;
+        let url = `${datamodel.apiserver}${datamodel.path}`;
         return axios({
             method: 'GET',
             url: url,

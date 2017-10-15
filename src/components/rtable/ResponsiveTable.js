@@ -5,6 +5,7 @@ import "./ResponsiveTable.css";
 class ResponsiveTable extends React.Component {
     constructor(props){
         super(props);
+        this.state = {isLoading:true, progress: 0};
         this.createNewObject = this.createNewObject.bind(this);
     }
 

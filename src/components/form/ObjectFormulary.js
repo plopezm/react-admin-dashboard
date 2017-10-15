@@ -4,7 +4,7 @@ import ObjectInputField from "./fields/ObjectInputField";
 import ObjectSelectField from "./fields/ObjectSelectField";
 import ObjectTextAreaField from "./fields/ObjectTextAreaField";
 import ObjectCheckboxField from "./fields/ObjectCheckboxField";
-import {APP_API_URL} from "../../configurations/Config";
+import {APP_API_URL} from "../../configurations/SecurityConfig";
 
 
 class ObjectFormulary extends React.Component {

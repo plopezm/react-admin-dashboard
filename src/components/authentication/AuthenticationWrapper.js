@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux';
+import jwtParser from 'jwt-decode';
 
 
 export default function (Component) {
@@ -12,12 +13,22 @@ export default function (Component) {
         componentWillMount(){
             if(!this.props.authentication.isAuthenticated){
                 this.redirectLogin();
+                return;
+            }
+            if(this.props.authentication.token !== ''){
+                var decoded = jwtParser(this.props.authentication.token);
+                console.log(decoded);
             }
         }
 
         componentWillUpdate(nextProps){
             if(!nextProps.authentication.isAuthenticated){
                 this.redirectLogin();
+                return;
+            }
+            if(nextProps.authentication.token !== '') {
+                var decoded = jwtParser(nextProps.authentication.token);
+                console.log(decoded);
             }
         }
 

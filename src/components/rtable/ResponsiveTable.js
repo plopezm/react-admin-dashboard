@@ -35,7 +35,7 @@ class ResponsiveTable extends React.Component {
 
     render(){
         return (
-            <div className="container margin-top-enabled ">
+            <div className="container margin-top-enabled">
                 <div className="card columns">
                     <div className="column is-marginless">
                         <button className="button" onClick={this.createNewObject}><i className="fa fa-plus"/></button>

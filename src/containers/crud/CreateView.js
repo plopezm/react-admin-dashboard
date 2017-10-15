@@ -32,7 +32,7 @@ class CreateView extends React.Component{
     onSubmit(object){
         console.log("Object to create: ", object);
         this.props.createObject(this.props.authentication, this.props.datamodel, object);
-        // this.props.history.push(this.props.datamodel.path);
+        this.props.history.push(this.props.datamodel.path);
     }
 
     renderForm() {

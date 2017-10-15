@@ -42,7 +42,7 @@ class EditView extends React.Component{
     onSubmit(object){
         console.log("Object to update: ", object);
         this.props.updateObject(this.props.authentication, this.props.datamodel, object);
-        // this.props.history.push(this.props.datamodel.path);
+        this.props.history.push(this.props.datamodel.path);
     }
 
     renderForm() {

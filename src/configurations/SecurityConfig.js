@@ -20,4 +20,9 @@ export const SIGNOUT_RESOURCE = {
     method: 'GET'
 };
 
+export const REFRESH_TOKEN_RESOURCE = {
+    path: '/refresh',
+    method: 'GET'
+};
+
 

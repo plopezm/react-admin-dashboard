@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import authenticate from '../../components/authentication/AuthenticationWrapper';
+import authenticate from '../../components/authentication/JwtAuthenticationWrapper';
 import {getObjectById, updateObject} from "../../actions/DataModelsActions";
 import NavBar from '../../components/navbar/NavBar';
 import ObjectFormulary from "../../components/form/ObjectFormulary";
@@ -39,7 +39,6 @@ class EditView extends React.Component{
     }
 
     onSubmit(object){
-        console.log("Object to update: ", object);
         this.props.updateObject(this.props.authentication, this.props.datamodel, object);
         this.props.history.push(this.props.datamodel.path);
     }

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import AuthenticationReducer from './AuthenticationReducer';
+import AuthenticationReducer from './JwtAuthenticationReducer';
 import DataModelReducer from './DataModelsReducer';
 
 const allReducers = combineReducers({

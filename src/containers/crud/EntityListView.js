@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import authenticate from '../../components/authentication/AuthenticationWrapper';
+import authenticate from '../../components/authentication/JwtAuthenticationWrapper';
 import {getAll, deleteObjectById} from "../../actions/DataModelsActions";
 import NavBar from '../../components/navbar/NavBar';
 import ResponsiveTable from "../../components/rtable/ResponsiveTable";

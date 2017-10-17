@@ -3,7 +3,8 @@
  */
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';
-export const VALIDATE = 'VALIDATE-SESSION'
+export const VALIDATE = 'VALIDATE-SESSION';
+export const REFRESH_TOKEN = 'REFRESH_TOKEN';
 
 /**
  * DataModel actions

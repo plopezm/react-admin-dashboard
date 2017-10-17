@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import authenticate from '../../components/authentication/AuthenticationWrapper';
+import authenticate from '../../components/authentication/JwtAuthenticationWrapper';
 import {getObjectById, createObject} from "../../actions/DataModelsActions";
 import NavBar from '../../components/navbar/NavBar';
 import ObjectFormulary from "../../components/form/ObjectFormulary";

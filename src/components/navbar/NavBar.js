@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {logout} from '../../actions/AuthenticationActions'
+import {logout} from '../../actions/JwtAuthenticationActions'
 
 class NavBar extends React.Component {
 

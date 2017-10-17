@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { authenticate } from "../../actions/AuthenticationActions";
+import { authenticate } from "../../actions/JwtAuthenticationActions";
 
 import './Login.css'
 

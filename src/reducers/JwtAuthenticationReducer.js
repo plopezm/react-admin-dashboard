@@ -1,4 +1,4 @@
-import { SIGN_IN, SIGN_OUT, VALIDATE } from "../actions/ActionTypes";
+import {REFRESH_TOKEN, SIGN_IN, SIGN_OUT, VALIDATE} from "../actions/ActionTypes";
 
 const INITIAL_STATE = {
     isAuthenticated: false
@@ -23,6 +23,7 @@ export default function (state = getStateFromLocalStorage(), action) {
     switch (action.type){
         case VALIDATE:
         case SIGN_IN:
+        case REFRESH_TOKEN:
             setLocalStorageFromState(action.payload);
             return Object.assign({}, state, action.payload);
         case SIGN_OUT:

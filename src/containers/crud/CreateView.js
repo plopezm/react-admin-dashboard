@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import authenticate from '../../components/authentication/AuthenticationWrapper';
+import authenticate from '../../components/authentication/JwtAuthenticationWrapper';
 import {getObjectById, createObject} from "../../actions/DataModelsActions";
 import NavBar from '../../components/navbar/NavBar';
 import ObjectFormulary from "../../components/form/ObjectFormulary";
@@ -29,7 +29,6 @@ class CreateView extends React.Component{
     }
 
     onSubmit(object){
-        console.log("Object to create: ", object);
         this.props.createObject(this.props.authentication, this.props.datamodel, object);
         this.props.history.push(this.props.datamodel.path);
     }
@@ -37,7 +36,7 @@ class CreateView extends React.Component{
     renderForm() {
         if (this.props.datamodel){
             return (
-                <ObjectFormulary title="Create" className="container margin-top-enabled" datamodel={this.props.datamodel} onSubmit={this.onSubmit} onFetchModel={this.onFetchModel}/>
+                <ObjectFormulary title="Create" className="container margin-top-enabled" datamodel={this.props.datamodel} onCancel={() => this.props.history.push(this.props.datamodel.path)} onSubmit={this.onSubmit} onFetchModel={this.onFetchModel}/>
             );
         }else{
             return <p>Data model not found</p>

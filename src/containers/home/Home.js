@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import isAuthenticated from "../../components/authentication/AuthenticationWrapper";
+import isAuthenticated from "../../components/authentication/JwtAuthenticationWrapper";
 
 import NavBar from "../../components/navbar/NavBar"
 import CardTable from "../../components/cardtable/CardTable";

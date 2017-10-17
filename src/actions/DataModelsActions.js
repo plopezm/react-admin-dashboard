@@ -41,7 +41,6 @@ export function getObjectById(authorization, datamodel, id) {
 }
 
 export function createObject(authorization, datamodel, object){
-    console.log("Creating: ",object);
     return function (dispatch, getState) {
         axios({
             method: 'POST',
@@ -62,7 +61,6 @@ export function createObject(authorization, datamodel, object){
 }
 
 export function updateObject(authorization, datamodel, object){
-    console.log("Creating: ",object);
     return function (dispatch, getState) {
         axios({
             method: 'PUT',

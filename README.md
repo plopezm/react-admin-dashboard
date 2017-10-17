@@ -1,4 +1,4 @@
-# AdminCrud
+# react-admin-dashboard
 
 This this a crud generator for REST APIs. You only have to define the models and that's it. 
 

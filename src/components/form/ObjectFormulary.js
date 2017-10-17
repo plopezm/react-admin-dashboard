@@ -1,11 +1,6 @@
 import React from 'react';
-import axios from 'axios';
 import ObjectInputField from "./fields/ObjectInputField";
 import ObjectSelectField from "./fields/ObjectSelectField";
-import ObjectTextAreaField from "./fields/ObjectTextAreaField";
-import ObjectCheckboxField from "./fields/ObjectCheckboxField";
-import {APP_API_URL} from "../../configurations/SecurityConfig";
-
 
 class ObjectFormulary extends React.Component {
     constructor(props){
@@ -77,15 +72,15 @@ class ObjectFormulary extends React.Component {
                 if(this.state.fetchedModels[key] === undefined){
                     this.state.fetchedModels[key] = this.fetchModel(this.props.datamodel.relations === undefined ? undefined : this.props.datamodel.relations[key]);
                 }
-                return <ObjectSelectField key={key} label={key} onFetchModel={this.props.onFetchModel} selectedOption={object[key]}
-                                          options={this.state.fetchedModels[key]}
+                return <ObjectSelectField key={key} label={key} onFetchModel={this.props.onFetchModel} selectedOption={object === undefined ? "" : object[key]}
+                                          options={this.state.fetchedModels[key] === undefined ? [] : this.state.fetchedModels[key]}
                                           onChange={this.onChange} datamodel={this.props.datamodel.relations === undefined ? undefined : this.props.datamodel.relations[key]}/>
             }else if(this.props.datamodel.composition[key] === "string"){
-                return <ObjectInputField key={key} label={key} value={object[key]} onChange={this.onChange}/>
+                return <ObjectInputField key={key} label={key} value={object == undefined ? "": object[key]} onChange={this.onChange}/>
             }else if(this.props.datamodel.composition[key] === "password"){
-                return <ObjectInputField key={key} type="password" label={key} value={object[key]} onChange={this.onChange}/>
+                return <ObjectInputField key={key} type="password" label={key} value={object == undefined ? "": object[key]} onChange={this.onChange}/>
             }else if(this.props.datamodel.composition[key] === 'boolean') {
-                return <ObjectSelectField key={key} label={key} value={object[key]} options={[true, false]} optionsTitleKey="" onChange={this.onChange}/>
+                return <ObjectSelectField key={key} label={key} value={object == undefined ? []: object[key]} options={[true, false]} optionsTitleKey="" onChange={this.onChange}/>
             }
         });
 
@@ -102,7 +97,7 @@ class ObjectFormulary extends React.Component {
                             <input type="submit" className="button is-primary" value="Submit"/>
                         </div>
                         <div className="control">
-                            <button className="button is-link" onClick={this.onCancel}>Cancel</button>
+                            <a className="button is-danger" onClick={this.onCancel}>Cancel</a>
                         </div>
                     </div>
                 </form>
